@@ -52,7 +52,7 @@ export  class Map extends Component {
             isMarkerShown
             googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyBiqYQSFmxgoM69o0uHdqhoCktOOO8uXls"
             loadingElement={<div style={{ height: `100%` }} />}
-            containerElement={<div style={{ height: ` 1000px`, width: `100%` }} />}
+            containerElement={<div style={{ height: ` 100%`, width: `80%` }} />}
             mapElement={<div style={{ height: `100%` }} />}
             />
     )

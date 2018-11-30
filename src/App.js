@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import './assets/css/App.css';
-import {Map} from './components/Map'
-import SquareAPI from './API/'
+import {Map} from './components/Map';
+import SquareAPI from './API/';
 import Marker from 'react-google-maps/lib/components/Marker';
+import Menu from './components/Menu'
 
 class App extends Component {
 
@@ -37,6 +38,17 @@ handleMarkerClick = marker => {
     // console.log(res)
   })
 }
+
+handleListItemClick = venue => {
+
+  console.log("Venue Data" + venue)
+
+  const marker = this.state.markers.find(marker => marker.id === venue.id);
+  this.handleMarkerClick(marker);
+  console.log("Marker info" + marker)
+}
+
+
   componentDidMount() {
     // this.getVenues()
     SquareAPI.search({
@@ -50,7 +62,7 @@ handleMarkerClick = marker => {
       const {center} = results.response.geocode.feature.geometry;
       const markers = venues.map(venue => {
 
-        console.log(results);
+        // console.log(results);
         return {
 
           id: venue.id,
@@ -71,9 +83,15 @@ handleMarkerClick = marker => {
   render() {
     return (
 
-      <Map {...this.state} handleMarkerClick={this.handleMarkerClick} />
-
-    )
+     <div className="mapApp">
+     <div className="Menu">
+       <Menu {...this.state} handleListItemClick={this.handleListItemClick} />
+       </div>
+       <div className="Map">
+        <Map {...this.state} handleMarkerClick={this.handleMarkerClick} />
+        </div>
+     </div>
+    );
   }
 }
 
