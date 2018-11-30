@@ -40,12 +40,10 @@ handleMarkerClick = marker => {
 }
 
 handleListItemClick = venue => {
-
-  console.log("Venue Data" + venue)
-
+  // console.log("Venue Data" + venue)
   const marker = this.state.markers.find(marker => marker.id === venue.id);
   this.handleMarkerClick(marker);
-  console.log("Marker info" + marker)
+  // console.log("Marker info" + marker) 
 }
 
 
