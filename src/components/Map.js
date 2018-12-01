@@ -14,7 +14,7 @@ const MyMapComponent = withScriptjs(withGoogleMap((props) =>
             .filter(marker => marker.isVisible)
             .map((marker,idx) => {
                 
-              const venueInfo = props.venues.find(venue => venue.id == marker.id);
+              const venueInfo = props.venues.find(venue => venue.id === marker.id);
               return (
               
                 <Marker

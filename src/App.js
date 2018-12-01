@@ -26,7 +26,7 @@ openInfoWindow = marker => {
   this.closeInfoWindow();
   marker.isOpen = true;
   this.setState({ markers: Object.assign(this.state.markers, marker) });
-  // const item =  this.state.items.find(item => item.id === marker.id);
+
   const venue = this.state.venues.find(venue => venue.id === marker.id);
 
   SquareAPI.getVenuesDetails(marker.id).then(res => {
