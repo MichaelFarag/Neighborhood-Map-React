@@ -8,7 +8,7 @@ export default class ItemList extends Component {
        { this.props.venues && 
             this.props.venues.map((venue,idx) => (
             <Item key={idx} {...venue}  handleListItemClick={this.props.handleListItemClick}/>
-            ))}; 
+            ))}
      </ul>
     )
   }

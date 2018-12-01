@@ -13,7 +13,10 @@ constructor (){
     venues :[],
     markers : [],
     center : [],
-    zoom : 12
+    zoom : 12,
+    updateSuperState: obj => {
+      this.setState(obj);
+    }
   }
 }
 
@@ -53,7 +56,7 @@ handleListItemClick = venue => {
       
       near: "London",
       query: "Shops",
-      limit:10
+      limit:6
 
     }).then(results => {
       const {venues} = results.response;
