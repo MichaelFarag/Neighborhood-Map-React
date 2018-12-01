@@ -3,7 +3,8 @@ import React, { Component } from 'react'
 export default class Item extends Component {
   render() {
     return (
-        <li className="shopItem" onClick={()=> this.props.handleListItemClick(this.props)}>
+      //Display shop item
+        <li className="shopItem" onClick={()=> this.props.itemClick(this.props)}>
         {this.props.name}
         </li>
     )

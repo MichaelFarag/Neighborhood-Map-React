@@ -20,16 +20,10 @@ constructor (){
   }
 }
 
-handleCloseMarkers = () =>{
-  const markers = this.state.markers.map(marker => {
-    marker.isOpen = false;
-    return marker;
-  })
-  this.setState({marker : Object.assign(this.state.markers,markers)})
-}
 
-handleMarkerClick = marker => {
-  this.handleCloseMarkers();
+//Open Info window handling
+openInfoWindow = marker => {
+  this.closeInfoWindow();
   marker.isOpen = true;
   this.setState({ markers: Object.assign(this.state.markers, marker) });
   // const item =  this.state.items.find(item => item.id === marker.id);
@@ -42,18 +36,28 @@ handleMarkerClick = marker => {
   })
 }
 
-handleListItemClick = venue => {
+//Close info window handling
+closeInfoWindow = () =>{
+  const markers = this.state.markers.map(marker => {
+    marker.isOpen = false;
+    return marker;
+  })
+  this.setState({marker : Object.assign(this.state.markers,markers)})
+}
+
+//marker click function 
+itemClick = venue => {
   // console.log("Venue Data" + venue)
   const marker = this.state.markers.find(marker => marker.id === venue.id);
-  this.handleMarkerClick(marker);
+  this.openInfoWindow(marker);
   // console.log("Marker info" + marker) 
 }
 
 
+//fetch all data from SquareAPI
   componentDidMount() {
     // this.getVenues()
     SquareAPI.search({
-      
       near: "London",
       query: "Shops",
       limit:6
@@ -86,10 +90,10 @@ handleListItemClick = venue => {
 
      <div className="mapApp">
      <div className="Menu">
-       <Menu {...this.state} handleListItemClick={this.handleListItemClick} />
+       <Menu {...this.state} itemClick={this.itemClick} />
        </div>
        <div className="Map">
-        <Map {...this.state} handleMarkerClick={this.handleMarkerClick} />
+        <Map {...this.state} openInfoWindow={this.openInfoWindow} />
         </div>
      </div>
     );

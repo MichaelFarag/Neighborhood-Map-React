@@ -11,7 +11,8 @@ export default class Menu extends Component {
     };
   }
 
-  handleFilterVenues = () => {
+  //filter function 
+  filter = () => {
     if (this.state.query.trim() !== "") {
       const venues = this.props.venues.filter(venue =>
         venue.name.toLowerCase().includes(this.state.query.toLowerCase())
@@ -22,7 +23,8 @@ export default class Menu extends Component {
 
   };
 
-  handleChange = e => {
+  //search on shope handling
+  search = e => {
     this.setState({ query: e.target.value });
     const markers = this.props.venues.map(venue => {
       const isMatched = venue.name
@@ -42,12 +44,12 @@ export default class Menu extends Component {
   render() {
     return (
         <div className="sidebar">
-        <input type={"search"} id={"search"} placeholder={"search here"} onChange={this.handleChange} />
+        <input type={"search"} id={"search"} placeholder={"search here"} onChange={this.search} />
         <ItemList 
         
         {...this.props} 
-         venues={this.handleFilterVenues()} 
-         handleListItemClick={this.props.handleListItemClick}
+         venues={this.filter()} 
+         itemClick={this.props.itemClick}
 
          />
       </div>

@@ -26,7 +26,7 @@ const MyMapComponent = withScriptjs(withGoogleMap((props) =>
                  
                  title={marker.name}
                  key={idx}
-                 onClick={() => props.handleMarkerClick(marker)}
+                 onClick={() => props.openInfoWindow(marker)}
                   >
 
       {marker.isOpen && (
