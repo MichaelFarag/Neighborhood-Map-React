@@ -54,11 +54,6 @@ export default class SquareAPI {
 
     static getVenuesDetails(VENUE_ID) {
         return Helper.simpleFetch(`/venues/${VENUE_ID}`, "GET");
-
     }
 
-    static getVenuesPhoto(VENUE_ID) {
-
-        return Helper.simpleFetch(`/venues/${VENUE_ID}/phtos`, "GET");
-    }
 }
